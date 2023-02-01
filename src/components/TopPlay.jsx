@@ -48,8 +48,8 @@ const TopPlay = () => {
   useEffect(() => {
     divRef.current.scrollIntoView({ behavior: 'smooth' });
   });
-   console.log(data)
-  const topPlays = data?.slice(0, 5);
+
+  const topPlays = data?.filter(item => (item.artists)).slice(0, 5);
 
   const handlePauseClick = () => {
     dispatch(playPause(false));
@@ -59,9 +59,6 @@ const TopPlay = () => {
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
-
-  console.log(data)
-
 
   return (
     <div ref={divRef} className="xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex flex-col">
